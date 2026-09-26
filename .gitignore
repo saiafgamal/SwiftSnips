@@ -1,0 +1,9 @@
+.build/
+.swiftpm/
+dist/
+local-qa/
+.DS_Store
+*.log
+
+__pycache__/
+*.pyc
