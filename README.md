@@ -6,8 +6,8 @@ SwiftSnips runs locally. It has no account, cloud sync, network service, third-p
 
 ## Requirements
 
-- macOS 14 or later
-- Full Xcode with a Swift 6 toolchain (Command Line Tools alone may lack the SwiftUI build support)
+- macOS 14 or later to run the app
+- Apple silicon, macOS 26.6 or later, and full Xcode 27 to build from source (the Xcode 26.6 compiler crashes while optimizing the current app target)
 - Python 3 for the packaging script
 
 ## Build and run from source
@@ -20,7 +20,7 @@ bash scripts/build.sh
 open dist/SwiftSnips.app
 ```
 
-Select full Xcode with `xcode-select` or set `DEVELOPER_DIR` if `swift` resolves to a Command Line Tools installation. `scripts/build.sh` packages a local app and verifies its code signature. It signs ad hoc by default; that is suitable for trying the app locally but can cause macOS to ask for Accessibility access again after rebuilding. To use your own persistent code-signing certificate, run the build with `SWIFTSNIPS_SIGN_IDENTITY` set to that certificate's fingerprint or identity name. No signing key is included in the repository. This source build is not notarized for redistribution as a binary.
+Select Xcode 27 with `xcode-select` or set `DEVELOPER_DIR` if `swift` resolves to Command Line Tools or an older Xcode. `scripts/build.sh` packages a local app and verifies its code signature. It signs ad hoc by default; that is suitable for trying the app locally but can cause macOS to ask for Accessibility access again after rebuilding. To use your own persistent code-signing certificate, run the build with `SWIFTSNIPS_SIGN_IDENTITY` set to that certificate's fingerprint or identity name. No signing key is included in the repository. This source build is not notarized for redistribution as a binary.
 
 After launching, allow the app in macOS **System Settings → Privacy & Security → Accessibility**, then turn on expansion in SwiftSnips. This access lets the app observe shortcuts and post replacement keystrokes across apps. It is a broad macOS permission; review the source before granting it.
 
