@@ -13,7 +13,7 @@ SwiftSnips runs locally. It has no account, cloud sync, network service, third-p
 ## Build and run from source
 
 ```sh
-git clone <repository-url>
+git clone https://github.com/saiafgamal/SwiftSnips.git
 cd SwiftSnips
 swift test -c release
 bash scripts/build.sh
