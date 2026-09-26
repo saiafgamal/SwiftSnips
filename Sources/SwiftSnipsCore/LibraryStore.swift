@@ -7,7 +7,7 @@ public struct LibraryStore: Sendable {
 
     public static var standard: LibraryStore {
         LibraryStore(folder: FileManager.default.homeDirectoryForCurrentUser
-            .appendingPathComponent("Library/Application Support/org.swiftsnips.app", isDirectory: true))
+            .appendingPathComponent("Library/Application Support/SwiftSnips", isDirectory: true))
     }
 
     public func load() throws -> SnippetLibrary {

@@ -20,11 +20,11 @@ bash scripts/build.sh
 open dist/SwiftSnips.app
 ```
 
-Select Xcode 27 with `xcode-select` or set `DEVELOPER_DIR` if `swift` resolves to Command Line Tools or an older Xcode. `scripts/build.sh` packages a local app and verifies its code signature. It signs ad hoc by default; that is suitable for trying the app locally but can cause macOS to ask for Accessibility access again after rebuilding. To use your own persistent code-signing certificate, run the build with `SWIFTSNIPS_SIGN_IDENTITY` set to that certificate's fingerprint or identity name. No signing key is included in the repository. This source build is not notarized for redistribution as a binary.
+Select Xcode 27 with `xcode-select` or set `DEVELOPER_DIR` if `swift` resolves to Command Line Tools or an older Xcode. `scripts/build.sh` packages a local app and verifies its code signature. It signs ad hoc by default; that is suitable for trying the app locally but can cause macOS to ask for Accessibility access again after rebuilding. Do not replace an existing certificate-signed installation with an ad hoc build. To use your own persistent code-signing certificate, run the build with `SWIFTSNIPS_SIGN_IDENTITY` set to that certificate's fingerprint or identity name. No signing key is included in the repository. This source build is not notarized for redistribution as a binary.
 
 After launching, allow the app in macOS **System Settings → Privacy & Security → Accessibility**, then turn on expansion in SwiftSnips. This access lets the app observe shortcuts and post replacement keystrokes across apps. It is a broad macOS permission; review the source before granting it.
 
-The app stores snippets at `~/Library/Application Support/org.swiftsnips.app/snippets.json` and keeps prior versions in a `Backups` folder. Both are plaintext and restricted to the current user account. This separate folder avoids changing data from a personal SwiftSnips installation. Do not store passwords or other secrets as snippets.
+The app uses bundle ID `me.saiaf.swiftsnips` and stores snippets at `~/Library/Application Support/SwiftSnips/snippets.json`, the same bundle ID and library path as existing SwiftSnips installations. Previous versions are kept in a `Backups` folder. Both library and backups are plaintext and restricted to the current user account. Do not store passwords or other secrets as snippets. Quit any running SwiftSnips copy before launching an updated build; running two copies can cause double expansion.
 
 ## Features and limits
 
